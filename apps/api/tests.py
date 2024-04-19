@@ -14,7 +14,7 @@ class AuthorViewSetTestCase(APITestCase):
         self.author1 = Author.objects.create(name='John', email='john@example.com')
         self.author2 = Author.objects.create(name='Alice', email='alice@example.com')
 
-    def test_list_authors(self):
+    def test_a_list_authors(self):
         print("Запуск теста test_list_authors")
         print("______________________________")
         print(f'В таблице автор {Author.objects.count()} значения')
@@ -28,7 +28,7 @@ class AuthorViewSetTestCase(APITestCase):
         print(f"Сериализатор вернул из БД: {serializer.data}")
         self.assertEqual(response.data['results'], serializer.data)
 
-    def test_retrieve_author(self):
+    def test_b_retrieve_author(self):
         print("Запуск теста test_retrieve_author")
         print("______________________________")
         url = reverse('authors-viewset-detail', kwargs={'pk': self.author1.pk})  # Укажите имя URL-шаблона и параметры
@@ -41,7 +41,7 @@ class AuthorViewSetTestCase(APITestCase):
         print(f"Сериализатор вернул из БД: {serializer.data}")
         self.assertEqual(response.data, serializer.data)
 
-    def test_create_author(self):
+    def test_c_create_author(self):
         print("Запуск теста test_create_author")
         print("______________________________")
         url = reverse('authors-viewset-list')  # Получаем URL ссылку
@@ -55,7 +55,7 @@ class AuthorViewSetTestCase(APITestCase):
         print(f"Сериализатор вернул из БД: {serializer.data}")
         self.assertEqual(response.data, serializer.data)
 
-    def test_update_author(self):
+    def test_d_update_author(self):
         print("Запуск теста test_update_author")
         print("______________________________")
         url = reverse('authors-viewset-detail', kwargs={'pk': self.author1.pk})
@@ -69,7 +69,7 @@ class AuthorViewSetTestCase(APITestCase):
         print(f"Сериализатор вернул из БД: {serializer.data}")
         self.assertEqual(response.data, serializer.data)
 
-    def test_partial_update_author(self):
+    def test_e_partial_update_author(self):
         print("Запуск теста test_partial_update_author")
         print("______________________________")
         url = reverse('authors-viewset-detail', kwargs={'pk': self.author1.pk})
@@ -83,7 +83,7 @@ class AuthorViewSetTestCase(APITestCase):
         print(f"Сериализатор вернул из БД: {serializer.data}")
         self.assertEqual(response.data, serializer.data)
 
-    def test_delete_author(self):
+    def test_f_delete_author(self):
         print("Запуск теста test_delete_author")
         print("______________________________")
         url = reverse('authors-viewset-detail', kwargs={'pk': self.author1.pk})
